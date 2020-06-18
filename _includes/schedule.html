@@ -1,3 +1,8 @@
+{% if include.schedule != nil %}
+  {% assign dataKey = include.schedule %}
+{% else %}
+  {% assign dataKey = 'schedule' %}
+{% endif %}
 {% assign daysOfTheWeek = site.data.schedule.meets.size %}
 {% assign date = site.data.schedule.start | date: "%s" %}
 {% assign endDate = site.data.schedule.end | date: "%s" %}
