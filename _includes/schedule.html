@@ -3,9 +3,9 @@
 {% else %}
   {% assign dataKey = 'schedule' %}
 {% endif %}
-{% assign daysOfTheWeek = site.data.schedule.meets.size %}
-{% assign date = site.data.schedule.start | date: "%s" %}
-{% assign endDate = site.data.schedule.end | date: "%s" %}
+{% assign daysOfTheWeek = site.data[dataKey].meets.size %}
+{% assign date = site.data[dataKey].start | date: "%s" %}
+{% assign endDate = site.data[dataKey].end | date: "%s" %}
 {% assign max = endDate | minus: date | divided_by: 86400 %}
 {% assign class = 0 %}
 {% assign meeting = 0 %}
@@ -17,25 +17,25 @@
     {% assign day = index | times: 86400 | plus: date %}
     {% assign weekDay = day | date: "%A" | downcase %}
     {% assign matchDay = day | date: "%Y-%m-%d" %}
-    {% if site.data.schedule.redefined == nil %}
+    {% if site.data[dataKey].redefined == nil %}
       {% comment %}We make isRedefined empty if there are no redefined days{% endcomment %}
       {% assign isRedefined = "" | split: "" %}
     {% else %}
-      {% assign isRedefined = site.data.schedule.redefined | where: "date", matchDay %}
+      {% assign isRedefined = site.data[dataKey].redefined | where: "date", matchDay %}
     {% endif %}
-    {% if site.data.schedule.holidays == nil %}
+    {% if site.data[dataKey].holidays == nil %}
       {% assign holiday = "" | split: "" %}
     {% else %}
-      {% assign holiday = site.data.schedule.holidays | where: "date", matchDay %}
+      {% assign holiday = site.data[dataKey].holidays | where: "date", matchDay %}
     {% endif %}
-    {% unless site.data.schedule.meets contains weekDay or isRedefined.size != 0 %}
+    {% unless site.data[dataKey].meets contains weekDay or isRedefined.size != 0 %}
       {% continue %}
     {% endunless %}
     {% if isWeek == 0 %}
-      {% if site.data.schedule.units == nil %}
+      {% if site.data[dataKey].units == nil %}
         {% assign isUnit = "" | split: "" %}
       {% else %}
-        {% assign isUnit = site.data.schedule.units | where: "start", week %}
+        {% assign isUnit = site.data[dataKey].units | where: "start", week %}
       {% endif %}
     <div class="schedule__week">
       {% if isUnit.size != 0 %}
@@ -47,13 +47,13 @@
           </p>
         {%endif%}
       {% endif %}
-      {% if site.data.schedule.units == nil %}<h2>{% else %}<h3>{% endif %}
+      {% if site.data[dataKey].units == nil %}<h2>{% else %}<h3>{% endif %}
         Week {{ week }}
         {% assign weekIndex = week | downcase %}
-        {% if site.data.schedule.weeks != nil and site.data.schedule.weeks[weekIndex] != nil %}
-         &ndash; {{ site.data.schedule.weeks[weekIndex] }}
+        {% if site.data[dataKey].weeks != nil and site.data[dataKey].weeks[weekIndex] != nil %}
+         &ndash; {{ site.data[dataKey].weeks[weekIndex] }}
         {% endif %}
-      {% if site.data.schedule.units == nil %}</h2>{% else %}</h3>{% endif %}
+      {% if site.data[dataKey].units == nil %}</h2>{% else %}</h3>{% endif %}
       {% assign week = week | plus: 1 %}
     </div>
     {% endif %}
@@ -71,8 +71,8 @@
           {{ holiday[0].name }}
         </p>
       {% else %}
-        {% if isRedefined == nil or isRedefined.size == 0 or site.data.schedule.meets contains isRedefined[0].is_a %}
-          {{ site.data.schedule.classes[meeting] | markdownify}}
+        {% if isRedefined == nil or isRedefined.size == 0 or site.data[dataKey].meets contains isRedefined[0].is_a %}
+          {{ site.data[dataKey].classes[meeting] | markdownify}}
           {% assign meeting = meeting | plus: 1 %}
         {% elsif isRedefined.size != 0 %}
           <p class="schedule__redefined-class">No Class, Go to {{ isRedefined[0].is_a | capitalize }} Classes.</p>
