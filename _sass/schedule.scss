@@ -9,6 +9,7 @@
   font-style: italic;
 }
 // Grid for Schedule:
+.schedule:before,
 .schedule:after {
   content: "";
   display: table;
