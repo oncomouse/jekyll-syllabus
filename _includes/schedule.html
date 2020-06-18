@@ -11,15 +11,28 @@
     {% assign day = index | times: 86400 | plus: date %}
     {% assign weekDay = day | date: "%A" | downcase %}
     {% assign matchDay = day | date: "%Y-%m-%d" %}
-    {% assign isRedefined = site.data.schedule.redefined | where: "date", matchDay %}
-    {% assign holiday = site.data.schedule.holidays | where: "date", matchDay %}
+    {% if site.data.schedule.redefined == nil %}
+      {% comment %}We make isRedefined empty if there are no redefined days{% endcomment %}
+      {% assign isRedefined = "" | split: "" %}
+    {% else %}
+      {% assign isRedefined = site.data.schedule.redefined | where: "date", matchDay %}
+    {% endif %}
+    {% if site.data.schedule.holidays == nil %}
+      {% assign holiday = "" | split: "" %}
+    {% else %}
+      {% assign holiday = site.data.schedule.holidays | where: "date", matchDay %}
+    {% endif %}
     {% unless site.data.schedule.meets contains weekDay or isRedefined.size != 0 %}
       {% continue %}
     {% endunless %}
     {% if isWeek == 0 %}
-    {% assign isUnit = site.data.schedule.units | where: "start", week %}
+      {% if site.data.schedule.units == nil %}
+        {% assign isUnit = "" | split: "" %}
+      {% else %}
+        {% assign isUnit = site.data.schedule.units | where: "start", week %}
+      {% endif %}
     <div class="schedule__week">
-      {% if site.data.schedule.units != nil and isUnit.size != 0 %}
+      {% if isUnit.size != 0 %}
       <h2>{{isUnit[0].title}}</h2>
       {% endif %}
       {% if site.data.schedule.units == nil %}<h2>{% else %}<h3>{% endif %}
@@ -46,7 +59,7 @@
           {{ holiday[0].name }}
         </p>
       {% else %}
-        {% if isRedefined.size == 0 or site.data.schedule.meets contains isRedefined[0].is_a %}
+        {% if isRedefined == nil or isRedefined.size == 0 or site.data.schedule.meets contains isRedefined[0].is_a %}
           {{ site.data.schedule.classes[meeting] | markdownify}}
           {% assign meeting = meeting | plus: 1 %}
         {% elsif isRedefined.size != 0 %}
