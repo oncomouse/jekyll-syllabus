@@ -5,6 +5,7 @@
 {% assign class = 0 %}
 {% assign meeting = 0 %}
 {% assign week = 1 %}
+{% assign unit = 1 %}
 <article class="schedule schedule--{{ daysOfTheWeek }}-per-week">
   {% for index in (0..max) %} 
     {% assign isWeek = class | modulo: daysOfTheWeek %}
@@ -33,7 +34,13 @@
       {% endif %}
     <div class="schedule__week">
       {% if isUnit.size != 0 %}
-      <h2>{{isUnit[0].title}}</h2>
+        <h2>Unit {{ unit }} &ndash; {{isUnit[0].title}}</h2>
+        {% assign unit = unit | plus: 1 %}
+        {% if isUnit[0].description != nil %}
+          <p class="schedule_unit-description">
+            {{ isUnit[0].description }}
+          </p>
+        {%endif%}
       {% endif %}
       {% if site.data.schedule.units == nil %}<h2>{% else %}<h3>{% endif %}
         Week {{ week }}

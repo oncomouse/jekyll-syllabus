@@ -50,6 +50,19 @@ redefined:
 meets:
   - tuesday
   - thursday
+# This key contains a sequence of mappings that define unit titles, when a unit starts, and provides a description.
+units:
+  - title: Understanding History
+    start: 1
+    description: |
+      This unit examines the topic of history in 20th century rhetorical theory.
+  - title: Shaping Subjectivity
+    start: 6
+    description: |
+      This unit examines the relationship between rhetoric and human
+      subjectivity.
+  - title: Emerging Technology
+    start: 11
 # This key contains names for each week. Because a number cannot be the key for
 # a mapping in YAML, we have to put the week number in quotes. It's strange,
 # I know.
