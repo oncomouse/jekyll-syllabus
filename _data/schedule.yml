@@ -56,8 +56,7 @@ units:
     start: 1
     description: |
       This unit examines the topic of history in 20th century rhetorical theory.
-  - title: Shaping Subjectivity
-    start: 6
+  - start: 6
     description: |
       This unit examines the relationship between rhetoric and human
       subjectivity.

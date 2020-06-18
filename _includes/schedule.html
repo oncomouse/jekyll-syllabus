@@ -34,7 +34,7 @@
       {% endif %}
     <div class="schedule__week">
       {% if isUnit.size != 0 %}
-        <h2>Unit {{ unit }} &ndash; {{isUnit[0].title}}</h2>
+        <h2>Unit {{ unit }}{% if isUnit[0].title %}&ndash; {{isUnit[0].title}}{% endif %}</h2>
         {% assign unit = unit | plus: 1 %}
         {% if isUnit[0].description != nil %}
           <p class="schedule_unit-description">
