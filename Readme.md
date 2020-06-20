@@ -84,14 +84,14 @@ If you are using CSS only, you can include the following CSS in your site:
 .schedule__week{width:100%}
 .schedule__meeting--dummy{display:none}
 @media (min-width: 768px){
-	.schedule__meeting--dummy{display:block}
-	.schedule--1-per-week .schedule__meeting{width:100%}
-	.schedule--2-per-week .schedule__meeting{width:50%}
-	.schedule--3-per-week .schedule__meeting{width:33.3333333333%}
-	.schedule--4-per-week .schedule__meeting{width:25%}
-	.schedule--5-per-week .schedule__meeting{width:20%}
-	.schedule--6-per-week .schedule__meeting{width:16.6666666667%}
-	.schedule--7-per-week .schedule__meeting{width:14.2857142857%}
+.schedule__meeting--dummy{display:block}
+.schedule--1-per-week .schedule__meeting{width:100%}
+.schedule--2-per-week .schedule__meeting{width:50%}
+.schedule--3-per-week .schedule__meeting{width:33.3333333333%}
+.schedule--4-per-week .schedule__meeting{width:25%}
+.schedule--5-per-week .schedule__meeting{width:20%}
+.schedule--6-per-week .schedule__meeting{width:16.6666666667%}
+.schedule--7-per-week .schedule__meeting{width:14.2857142857%}
 }
 ~~~
 
