@@ -24,10 +24,12 @@
 .schedule__week {
   width: 100%;
 }
-@for $days from 1 through 7 {
-  .schedule--#{$days}-per-week {
-    .schedule__meeting {
-      width: 100% / $days;
+@media (min-width: 768px) {
+  @for $days from 1 through 7 {
+    .schedule--#{$days}-per-week {
+      .schedule__meeting {
+        width: 100% / $days;
+      }
     }
   }
 }
