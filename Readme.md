@@ -68,8 +68,7 @@ For more on including files, [see the Jekyll documentation on the topic](https:/
 
 ### Adding the styles
 
-You must be using SASS/SCSS on your site for this to work, but you can include the styles in your main SCSS file by adding the following anywhere in that file:
-
+If you are using SCSS, you can include it in your CSS by adding the following to your site's `.scss` file:
 ~~~scss
 @import "schedule";
 ~~~
