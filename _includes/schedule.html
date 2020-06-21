@@ -1,5 +1,8 @@
+{% assign fileName = page.path | split: "/" | last | replace: ".md", "" | replace: ".html", "" %}
 {% if include.schedule != nil %}
   {% assign dataKey = include.schedule %}
+{% elsif site.data[fileName] != nil %}
+  {% assign dataKey = fileName %}
 {% else %}
   {% assign dataKey = 'schedule' %}
 {% endif %}
