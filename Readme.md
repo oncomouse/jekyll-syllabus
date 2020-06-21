@@ -58,13 +58,19 @@ The schedule can be included anywhere in a `.md` or a `.html` file anywhere in y
 
 #### Using Multiple Schedules on the Same Site
 
-You can also use multiple schedule files on the same site by passing a `schedule` argument to the include tag. For instance, say you had a syllabus stored in `_data/engl210fall2020` instead of the default `_data/schedule.yml`. You could include that schedule in your site using:
+You can also use multiple schedule files on the same site by passing a `schedule` argument to the include tag. For instance, say you had a syllabus stored in `_data/engl210fall2020.yml` instead of the default `_data/schedule.yml`. You could include that schedule in your site using:
 
 ~~~liquid
 {% include schedule.html schedule="engl210fall2020" %}
 ~~~
 
-For more on including files, [see the Jekyll documentation on the topic](https://jekyllrb.com/docs/includes/)
+**Note**: if the YAML and Markdown files have the same base file name (ie. `_data/engl210.yml` and `2020/engl210.md`), you do not have to include the `schedule` option and can, instead, just use the following to include the schedule grid:
+
+~~~liquid
+{% include schedule.html %}
+~~~
+
+For more on including files, [see the Jekyll documentation on the topic](https://jekyllrb.com/docs/includes/).
 
 ### Adding the styles
 
