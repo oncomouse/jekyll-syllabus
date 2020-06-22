@@ -8,7 +8,7 @@ This inclusion is a standalone spin-off from the more complete [jekyll-course-si
 
 Instead of having to work out a day-by-day schedule grid for a course each semester you teach it, this inclusion allows you to describe course activities in a list (if you had 30 course meetings in a semester, you could describe 30 activities) and to describe the semester in terms of start and end dates, holidays, and any redefined days. From these two collections of data, the inclusion will generate a properly-styled, responsive schedule on your website.
 
-Using software like this allows you to keep one data file describing a course that you can use to easily generate new course websites each semester you teach the course. [Click here to see an example](https://oncomouse.github.io/jekyll-syllabus/).
+Using software like this allows you to keep one data file describing a course that you can use to easily generate new course websites each semester you teach the course. [Click here to see an example](https://oncomouse.github.io/jekyll-course-site/).
 
 ## How To Use It
 
